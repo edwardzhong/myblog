@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-controller="layoutCtrl">
+<head>
+	<meta charset="UTF-8">
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width">
+	<title>index</title>
+	<link rel=stylesheet href="../libs/normalize-css/normalize.css">
+	<link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
+	<link rel=stylesheet href="../styles/index.css">
+	<script type=text/javascript src="../libs/modernizr/modernizr.js"></script>
+</head>
+<body>
+<div ng-include src="'views/partials/header.html'"></div>
+<div class="container main" ng-view></div>
+<script data-main="../js/main" src="/libs/requirejs/require.js"></script>
+</body>
+</html>

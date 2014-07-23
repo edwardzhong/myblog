@@ -1,0 +1,33 @@
+require.config({
+	baseUrl:'js',
+	paths:{
+		'jquery':'../libs/jquery/dist/jquery.min',
+        'bootstrap':'../libs/bootstrap/dist/js/bootstrap.min',
+		'angular':'../libs/angular/angular.min',
+		'angularRoute':'../libs/angular-route/angular-route.min'
+	},
+    shim:{
+        "jquery":{
+            exports:"jquery"
+        },
+        "bootstrap":{
+            exports:"bootstrap",
+            deps:["jquery"]
+        },
+        "angular":{
+            exports:"angular",
+            deps:['jquery']
+        },
+        "angularRoute":{
+            exports:"angularRoute",
+            deps:['angular']
+        }
+    },
+	priority: [
+		"angular"
+	]
+});
+
+require(["angular","bootstrap","app"],function(angular){
+    angular.bootstrap(document,['myapp']);//里面的myapp是app.js中的model名称
+});

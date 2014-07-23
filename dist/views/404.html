@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><title>404</title><link rel=stylesheet href=/libs/bootstrap/dist/css/bootstrap.css><style>body {
+	color: #000;
+	font-family: 'Open Sans';
+	font-size: 13px;
+}
+.center-block{width: 420px;margin: 50px auto;}
+.page-404 {
+	letter-spacing: -10px;
+	margin-top: 0px;
+	line-height: 158px;
+	font-size: 158px;
+	font-weight: 300;
+	color: #7bbbd6;
+	text-align: left;
+}
+h3 {
+	font-size: 24.5px;line-height: 40px;font-weight: 300;
+}
+p {
+	margin: 0 0 10px;
+}</style><script>(function() {
+    if ('onhashchange' in window) {
+        //if browser support onhaschange  如果浏览器支持onhaschange事件
+        if (window.addEventListener) {
+            window.addHashChange = function(func, before) {
+                window.addEventListener('hashchange', func, before);
+            };
+            window.removeHashChange = function(func) {
+                window.removeEventListener('hashchange', func);
+            };
+            return;
+        } else if (window.attachEvent) {
+            window.addHashChange = function(func) {
+                window.attachEvent('onhashchange', func);
+            };
+            window.removeHashChange = function(func) {
+                window.detachEvent('onhashchange', func);
+            };
+            return;
+        }
+    }
+    //if the browser not support onhaschange 如果不支持的话
+    var hashChangeFuncs = [];
+    var oldHref = location.href;
+    window.addHashChange = function(func, before) {
+        if ( typeof func === 'function')
+            hashChangeFuncs[before ? 'unshift': 'push' ](func);
+    };
+    window.removeHashChange = function(func) {
+        for (var i = hashChangeFuncs.length - 1; i >= 0; i--)
+            if (hashChangeFuncs[i] === func)
+                hashChangeFuncs.splice(i, 1);
+    };
+    //!!inportant!! 用setInterval检测has的改变
+    // setInterval(function() {
+    //     var newHref = location.href;
+    //     if (oldHref !== newHref) {
+    //         oldHref = newHref;
+    //         for (var i = 0; i < hashChangeFuncs.length; i++) {
+    //             hashChangeFuncs[i].call(window, {
+    //                 'type' : 'hashchange',
+    //                 'newURL' : newHref,
+    //                 'oldURL' : oldHref
+    //             });
+    //         }
+    //     }
+    // }, 100);
+})();
+// Usage, infinitely many times: 使用方法
+addHashChange(function(e) {
+    alert(e.newURL || location.href);
+});</script><body><div class=container><div class=center-block><div class=page-404>404</div><h3>Opps, You're lost.</h3><p>We can not find the page you're looking for.<br>Is there a typo in the url?</p></div></div>

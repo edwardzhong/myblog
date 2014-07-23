@@ -1,0 +1,32 @@
+<form method="post" name="articleForm" novalidate action="/saveArticle" class="form-horizontal">
+<fieldset>
+<legend>发 表 文 章</legend>
+	<div class="form-group">
+		<label for="title" class="col-sm-1 control-label">标 题:</label>
+		<div class="col-sm-10">
+			<input type="text" name="title" class="form-control" id="title" placeholder="文章标题" ng-model="article.title" ng-disabled="article._id" required>
+			<popover ng-show="regForm.submitted && regForm.userName.$error.required">标题不能为空</popover>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="content"  class="col-sm-1 control-label">内 容:</label>
+		<div class="col-sm-10">
+			<textarea name="content" id="content" cols="60" rows="9" class="form-control" placeholder="文章内容" ng-model="article.content"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tags" class="col-sm-1 control-label">标 签:</label>
+		<div class="col-sm-10">
+			<input type="text" name="tags"  class="form-control" id="tags" placeholder="使用英文逗号分隔" ng-model="article.tags">
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-1 col-sm-10">
+	      <button type="submit" class="btn btn-success" ng-click="save($event)"> 确 定 </button>
+	    </div>
+    </div>
+    <div class="form-group">
+    	<div class="alert alert-danger" ng-show="err" ng-bind="err"></div>
+	</div>
+    </fieldset>
+</form>

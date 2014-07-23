@@ -1,0 +1,39 @@
+require.config({
+	baseUrl:'js',
+	paths:{
+		'jquery':'../libs/jquery/dist/jquery.min',
+        'bootstrap':'../libs/bootstrap/dist/js/bootstrap.min',
+		'angular':'../libs/angular/angular.min',
+		'angularRoute':'../libs/angular-route/angular-route.min',
+        'bootstrapFileInput':'../libs/bootstrap.file-input'
+	},
+    //这个配置是你在引入依赖的时候的包名
+    shim:{
+        "jquery":{
+            exports:"jquery"
+        },
+        "bootstrap":{
+            exports:"bootstrap",
+            deps:["jquery"]
+        },
+        "bootstrapFileInput":{
+            exports:"bootstrapFileInput",
+            deps:["bootstrap"]
+        },
+        "angular":{
+            exports:"angular",
+            deps:['jquery']
+        },
+        "angularRoute":{
+            exports:"angularRoute",
+            deps:['angular']
+        }
+    },
+	priority: [
+		"angular"
+	]
+});
+
+require(["angular","bootstrap","admin"],function(angular){
+    angular.bootstrap(document,['myadmin']);
+});
