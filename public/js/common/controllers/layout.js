@@ -7,5 +7,8 @@ define(function(){
 			});
 		};
 		$scope.setInfo();
+		$scope.$on("login",function(event,user){//接收子制控制器事件login
+			$scope.setInfo();
+		});
 	}];
 });

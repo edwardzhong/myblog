@@ -19,7 +19,8 @@ define(function () {
                     if (data.err) {
                         return $scope.err = data.err;
                     }
-                    $scope.$parent.setInfo();
+                    // $scope.$parent.setInfo();
+                    $scope.$emit("login", $scope.user);//向父控制器传递login事件
                     $location.path("/");
                 });
             };
