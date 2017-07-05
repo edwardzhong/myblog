@@ -14,8 +14,7 @@ articleDao.prototype.getPage=function(query,pageQuery,callback){
 		size=pageQuery.size,
 		total=0;
 	articleModel.count(query,function(err,counts){
-		total=parseInt(counts/size,10);
-		if(counts%size){total++;}
+		total=Math.ceil(counts/size,10);
 		if(err){deferred.reject(err);}
 		else{
 			articleModel.find(query).sort({'_id':-1}).skip((page-1)*size).limit(size).populate('author','userName').exec(function(err,doc){

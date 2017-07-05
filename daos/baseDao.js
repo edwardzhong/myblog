@@ -11,14 +11,13 @@ function BaseDao(Model,entity){
 */
 BaseDao.prototype.getPage=function(query,pageQuery,callback){
 	//blogModel.find(query,null,{sort: [['_id', -1]]},callback);
-	var deferred=Q.defer();
-	var page=pageQuery.page,
+	var deferred=Q.defer(),
+		page=pageQuery.page,
 		size=pageQuery.size,
-		total=0;
-	var	model=this.model;
+		total=0,
+		model=this.model;
 	model.count(query,function(err,counts){
-		total=parseInt(counts/size,10);
-		if(counts%size){total++;}
+		total=Math.ceil(counts/size,10);
 		if(err){deferred.reject(err);}
 		else{
 			model.find(query).sort({'_id':-1}).skip((page-1)*size).limit(size).exec(function(err,doc){
